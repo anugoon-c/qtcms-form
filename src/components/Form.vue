@@ -38,7 +38,7 @@
           height="480px"
         >
         <v-text-field
-            v-model="firstname"
+            v-model="form.firstname"
             :rules="nameRules"
             :counter="10"
             label="First name"
@@ -46,7 +46,7 @@
         >
         </v-text-field>
         <v-text-field
-            v-model="lastname"
+            v-model="form.lastname"
             :rules="nameRules"
             :counter="10"
             label="Last name"
@@ -54,21 +54,28 @@
         >
         </v-text-field>
         <v-text-field
-            v-model="email"
+            v-model="form.email"
             :rules="emailRules"
             label="E-mail"
             required
         >
         </v-text-field>
         <v-text-field
-            v-model="job"
+            v-model="form.job"
             label="Job"
             required
         >
         </v-text-field>
-        <v-radio-group v-model="radios" :mandatory="false">
-        <v-radio label="Radio 1" value="radio-1"></v-radio>
-        <v-radio label="Radio 2" value="radio-2"></v-radio>
+        <v-text-field
+            v-model="form.age"
+            type='int'
+            label="age"
+            required
+        >
+        </v-text-field>
+        <v-radio-group v-model="form.gender" :mandatory="false">
+        <v-radio label="ชาย" value="ชาย"></v-radio>
+        <v-radio label="หญิง" value="หญิง"></v-radio>
         </v-radio-group>
         </v-card>
 
@@ -87,17 +94,27 @@
           class="mb-5"
           color="grey lighten-1"
           height="480px"
-        ></v-card>
+        >
+        
+        <p1>ชื่อ : {{form.firstname}} {{form.lastname}}</p1><br>
+        <p2>อีเมล์ : {{form.email}}</p2><br>
+        <p3>อาชีพ : {{form.job}}</p3><br>
+        <p4>อายุ : {{form.age}} เพศ : {{form.gender}}</p4><br>
+
+
+        </v-card>
 
         <v-btn
           color="primary"
-          @click="e1 = 1"
+          @click="addUser"
         >
-          Continue
+          SUBMIT
         </v-btn>
 
         <v-btn flat>Cancel</v-btn>
+
       </v-stepper-content>
+      
     </v-stepper-items>
   </v-stepper>
 </template>
@@ -110,10 +127,14 @@ const strapi = new Strapi('http://139.59.225.10:1337')
     data () {
       return {
         e1: 0,
-        firstname: '',
-        lastname: '',
-        email: '',
-        job: '',
+        form: {
+          firstname: '',
+          lastname: '',
+          email: '',
+          age: '',
+          job: '',
+          gender: 'ชาย'
+        },
         nameRules: [
         v => !!v || 'Name is required',
         v => v.length <= 10 || 'Name must be less than 10 characters'
@@ -121,15 +142,25 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
-        ],
-        radios: 'radio-1'
+        ]
       }
       
     },
     methods: {
-        async registUser () {
-            // const response = await strapi.createEntry('qtuserbio',name)
+        async addUser () {
+            // console.log(this.form)
+            try {
+              const response = await strapi.createEntry('qtuserbios',this.form)
+              if (response === 'undefine') {
+                throw new Error('User not found')
+              }
+              alert('Complete')
+
+            } catch (error) {
+              alert('Error')
+            }
         }
+            
     }
   }
 </script>
