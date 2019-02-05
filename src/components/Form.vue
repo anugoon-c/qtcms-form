@@ -125,10 +125,10 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         radios: 'radio-1'
       }
       
-    }
+    },
     methods: {
-        async addUser () {
-            const response = await strapi.createEntry('qtuserbio',name)
+        async registUser () {
+            // const response = await strapi.createEntry('qtuserbio',name)
         }
     }
   }
