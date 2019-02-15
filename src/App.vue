@@ -23,13 +23,11 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld'
 import Form from './components/Form'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
     Form
   },
   data () {
