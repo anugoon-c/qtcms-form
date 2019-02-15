@@ -18,6 +18,8 @@
     <v-content>
       <!-- <HelloWorld/> -->
       <Form/>
+      <!-- <Addmin/> -->
+      <!-- <GetUser/> -->
     </v-content>
   </v-app>
 </template>
@@ -25,12 +27,16 @@
 <script>
 // import HelloWorld from './components/HelloWorld'
 import Form from './components/Form'
+// import Addmin from './components/Addmin'
+// import GetUser from './components/GetUser'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld,
     Form
+    // Addmin,
+    // GetUser
   },
   data () {
     return {
