@@ -6,12 +6,12 @@
   >
     <template slot="items" slot-scope="props">
       <td>{{ props.item.id }}</td>
-      <td class="text-xs-right">{{ props.item.firstname }}</td>
-      <td class="text-xs-right">{{ props.item.lastname }}</td>
-      <td class="text-xs-right">{{ props.item.email }}</td>
-      <td class="text-xs-right">{{ props.item.age }}</td>
-      <td class="text-xs-right">{{ props.item.gender }}</td>
-      <!-- <td class="text-xs-right">{{ props.item.job }}</td> -->
+      <td class="text-xs-left">{{ props.item.firstname }}</td>
+      <td class="text-xs-left">{{ props.item.lastname }}</td>
+      <td class="text-xs-left">{{ props.item.email }}</td>
+      <td class="text-xs-left">{{ props.item.age }}</td>
+      <td class="text-xs-left">{{ props.item.gender }}</td>
+      <td class="text-xs-left">{{ props.item.job }}</td>
     </template>
   </v-data-table>
 </template>
@@ -26,7 +26,7 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         headers: [
           {
             text: 'ID',
-            align: 'left',
+            align: 'center',
             sortable: false,
             value: 'id'
           },
@@ -37,14 +37,14 @@ const strapi = new Strapi('http://139.59.225.10:1337')
           { text: 'เพศ', value: 'gender' },
           { text: 'อาชีพ', value: 'job' }
         ],
-        form: {
+        form: [{
           firstname: '',
           lastname: '',
           email: '',
           age: '',
           job: '',
           gender: ''
-        }
+        }]
       }
   },
   methods: {

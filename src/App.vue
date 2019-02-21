@@ -18,23 +18,23 @@
     <v-content>
       <!-- <HelloWorld/> -->
       <!-- <Form/> -->
-      <!-- <Addmin/> -->
-      <GetUser/>
+      <Addmin/>
+      <!-- <GetUser/> -->
     </v-content>
   </v-app>
 </template>
 
 <script>
 // import Form from './components/Form'
-// import Addmin from './components/Addmin'
-import GetUser from './components/GetUser'
+import Addmin from './components/Addmin'
+// import GetUser from './components/GetUser'
 
 export default {
   name: 'App',
   components: {
     // Form
-    // Addmin,
-    GetUser
+    Addmin,
+    // GetUser
   },
   data () {
     return {
