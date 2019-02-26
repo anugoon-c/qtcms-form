@@ -1,5 +1,5 @@
 <template>
-  <v-stepper non-linear>
+  <v-stepper v-model="e1">
     <v-stepper-header>
       <v-stepper-step :complete="e1 > 1" step="1">เลือกกิจกรรม</v-stepper-step>
 
@@ -31,16 +31,16 @@
           color="primary"
           @click="e1 = 2"
         >
-          Continue
+          ถัดไป
         </v-btn>
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn flat>ย้อนกลับ</v-btn>
       </v-stepper-content>
 
       <v-stepper-content step="2">
         <v-card
           class="mb-5"
-          color="grey lighten-1"
+          color="white"
           height="480px"
         >
         <v-text-field
@@ -89,16 +89,19 @@
           color="primary"
           @click="e1 = 3"
         >
-          Continue
+          ถัดไป
         </v-btn>
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn flat
+          @click="e1 = 1"
+        >
+        ย้อนกลับ</v-btn>
         </v-stepper-content>
 
         <v-stepper-content step="3">
         <v-card
           class="mb-5"
-          color="grey lighten-1"
+          color="white"
           height="480px"
         >
         
@@ -114,10 +117,13 @@
           color="primary"
           @click="addUser"
         >
-          SUBMIT
+          ส่งข้อมูล
         </v-btn>
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn flat
+          @click="e1 = 2"
+        >
+        ย้อนกลับ</v-btn>
 
       </v-stepper-content>
       
