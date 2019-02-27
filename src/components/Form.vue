@@ -173,7 +173,7 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         } 
     },
     mounted () {
-        Axios.get('http://139.59.225.10:8084/wp-json/tribe/events/v1/events/')
+        Axios.get('https://qitienhy.com/wp-json/tribe/events/v1/events/')
            .then(response => (this.eventData = response.data.events))
     },
     computed:{
