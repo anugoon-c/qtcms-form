@@ -2,14 +2,23 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>ลงทะเบียนกิจกรรม</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-       <v-btn color="primary" @click.native="$router.push('/GetUser')">สำหรับเจ้าหน้าที่</v-btn>
-       <v-btn color="success" @click.native="$router.push('/')">สมัครกิจกรรม</v-btn>
+      <v-badge
+      color="purple"
+      left
+      overlap
+      >
+      <v-icon
+        color="grey lighten-1"
+        large
+        @click.native="$router.push('/admin')"
+      >
+        account_circle
+      </v-icon>
+      </v-badge>
     </v-toolbar>
-
     <v-content>
       <router-view />
     </v-content>
@@ -17,7 +26,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App'
 }

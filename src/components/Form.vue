@@ -1,5 +1,5 @@
 <template>
-  <v-stepper non-linear>
+  <v-stepper v-model="e1">
     <v-stepper-header>
       <v-stepper-step :complete="e1 > 1" step="1">เลือกกิจกรรม</v-stepper-step>
 
@@ -21,7 +21,8 @@
         >
         <v-flex xs12 sm4 text-xs-center>
         <v-overflow-btn
-          :items="eventTitle"
+          v-model="form.eventName"
+          :items="filteredEvent"
           label="กิจกรรม"
           target="#dropdown-example"
         ></v-overflow-btn>
@@ -31,16 +32,16 @@
           color="primary"
           @click="e1 = 2"
         >
-          Continue
+          ถัดไป
         </v-btn>
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn flat>ย้อนกลับ</v-btn>
       </v-stepper-content>
 
       <v-stepper-content step="2">
         <v-card
           class="mb-5"
-          color="grey lighten-1"
+          color="white"
           height="480px"
         >
         <v-text-field
@@ -89,16 +90,19 @@
           color="primary"
           @click="e1 = 3"
         >
-          Continue
+          ถัดไป
         </v-btn>
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn flat
+          @click="e1 = 1"
+        >
+        ย้อนกลับ</v-btn>
         </v-stepper-content>
 
         <v-stepper-content step="3">
         <v-card
           class="mb-5"
-          color="grey lighten-1"
+          color="white"
           height="480px"
         >
         
@@ -114,10 +118,13 @@
           color="primary"
           @click="addUser"
         >
-          SUBMIT
+          ส่งข้อมูล
         </v-btn>
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn flat
+          @click="e1 = 2"
+        >
+        ย้อนกลับ</v-btn>
 
       </v-stepper-content>
       
@@ -140,7 +147,8 @@ const strapi = new Strapi('http://139.59.225.10:1337')
           email: '',
           age: '',
           job: '',
-          gender: 'ชาย'
+          gender: 'ชาย',
+          eventName: ''
         },
         nameRules: [
         v => !!v || 'Name is required',
@@ -151,7 +159,7 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         v => /.+@.+/.test(v) || 'E-mail must be valid'
         ],
         dropdown_event: ['Arial', 'Calibri', 'Courier', 'Verdana'],
-        eventData: '',
+        eventData: [],
         eventTitle: []
       }
       
@@ -173,7 +181,7 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         } 
     },
     mounted () {
-        Axios.get('http://139.59.225.10:8084/wp-json/tribe/events/v1/events/')
+        Axios.get('https://qitienhy.com/wp-json/tribe/events/v1/events/')
            .then(response => (this.eventData = response.data.events))
     },
     computed:{
