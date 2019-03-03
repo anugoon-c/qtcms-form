@@ -27,3 +27,8 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Software Requirement
+See<br> [QTCMS-form v.1.0.1](https://github.com/Encrypto2048/qtcms-form)<br>
+    [QTCMS-wp v.1.0.0](https://github.com/Encrypto2048/qtcms-wp)<br>
+    [QTCMS-strapi v.1.0.0](https://github.com/Encrypto2048/qtcms-strapi)
