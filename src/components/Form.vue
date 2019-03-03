@@ -21,7 +21,8 @@
         >
         <v-flex xs12 sm4 text-xs-center>
         <v-overflow-btn
-          :items="eventTitle"
+          v-model="form.eventName"
+          :items="filteredEvent"
           label="กิจกรรม"
           target="#dropdown-example"
         ></v-overflow-btn>
@@ -146,7 +147,8 @@ const strapi = new Strapi('http://139.59.225.10:1337')
           email: '',
           age: '',
           job: '',
-          gender: 'ชาย'
+          gender: 'ชาย',
+          eventName:''
         },
         nameRules: [
         v => !!v || 'Name is required',
@@ -157,7 +159,7 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         v => /.+@.+/.test(v) || 'E-mail must be valid'
         ],
         dropdown_event: ['Arial', 'Calibri', 'Courier', 'Verdana'],
-        eventData: '',
+        eventData: [],
         eventTitle: []
       }
       
@@ -179,7 +181,7 @@ const strapi = new Strapi('http://139.59.225.10:1337')
         } 
     },
     mounted () {
-        Axios.get('http://139.59.225.10:8084/wp-json/tribe/events/v1/events/')
+        Axios.get('https://qitienhy.com/wp-json/tribe/events/v1/events/')
            .then(response => (this.eventData = response.data.events))
     },
     computed:{
