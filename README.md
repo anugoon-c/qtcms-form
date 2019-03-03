@@ -1,4 +1,4 @@
-# qt-cms
+# qtcms-form
 
 ## Project setup
 ```
