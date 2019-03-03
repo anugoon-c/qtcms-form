@@ -148,7 +148,7 @@ const strapi = new Strapi('http://139.59.225.10:1337')
           age: '',
           job: '',
           gender: 'ชาย',
-          eventName:''
+          eventName: ''
         },
         nameRules: [
         v => !!v || 'Name is required',
